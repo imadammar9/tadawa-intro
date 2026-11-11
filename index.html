@@ -9,6 +9,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- Readex Pro covers Latin and Arabic. Swap for brand fonts (local @font-face in fonts/) if the brand has them. -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
 <style>
 /* ===== Brand tokens: change these first ===== */
 :root{
@@ -17,7 +19,8 @@
   --ink:#231f20; --ink-card:#2e2a2b; --ink-600:#5b5658; --ink-400:#8b8789;
   --mist-100:#f2f3f6; --mist-200:#e6e8ee; --white:#ffffff; --board:#0d0d0d;
   --on-brand-muted:rgba(255,255,255,.78);
-  --gradient:linear-gradient(135deg,var(--brand) 0%,var(--brand-deep) 100%);
+  --gradient:linear-gradient(45deg,var(--brand) 0%,var(--brand-deep) 100%);
+  --shadow-1:0 1px 2px rgba(35,31,32,.06),0 1px 3px rgba(17,94,109,.06);
   --font:"Readex Pro","Segoe UI",system-ui,sans-serif;
   --r-lg:24px; --r-xl:32px;
   --shadow-2:0 2px 6px rgba(35,31,32,.06),0 8px 24px rgba(17,94,109,.08);
@@ -137,6 +140,23 @@ a.vid:hover img,a.vid:focus-visible img{transform:scale(1.045)}
 .ctrl .count{color:rgba(255,255,255,.85);font-size:14px;letter-spacing:.08em;padding:0 10px;min-width:62px;text-align:center;font-variant-numeric:tabular-nums}
 .bar{position:absolute;bottom:0;inset-inline-start:0;height:5px;background:var(--brand-glow);z-index:5;transition:width .8s var(--ease-out)}
 @media (prefers-reduced-motion:reduce){.bar{transition:none}}
+/* ===== Tadawa design system (light only, white + teal; pulse from tadawa-pulse.js) ===== */
+.stage{background:var(--white)}
+.light{background:var(--white)}
+.brand h2 em{color:var(--white)}
+.lead,.card p,.step,.chip,.scard p{letter-spacing:.03em}
+.card{box-shadow:var(--shadow-1)}
+.brand .card:not(.hero){border-color:transparent}
+.foot img{height:56px;display:block}
+.logo-cover{width:400px;display:block}
+.icbox i{font-size:46px;line-height:1}
+.step .n i{font-size:30px;line-height:1}
+.step .n.x{background:var(--mist-200);color:var(--ink-600)}
+</style>
+<link rel="stylesheet" href="tadawa-theme.css">
+<style>
+/* English deck: Readex Pro first (Madani Arabic stays the Arabic fallback) */
+:root{--font:"Readex Pro","Madani Arabic","Segoe UI",system-ui,sans-serif}
 </style>
 </head>
 <body>
@@ -145,8 +165,9 @@ a.vid:hover img,a.vid:focus-visible img{transform:scale(1.045)}
 
 <!-- 1 Cover -->
 <section class="slide brand">
+  <div class="hb" data-peak=".76" data-s="1.7" data-tone="white" style="top:990px"></div>
   <div class="pad" style="display:flex;flex-direction:column">
-    <div data-a style="font-size:44px;font-weight:700;letter-spacing:.08em">TADAWA</div>
+    <img class="logo-cover" data-a src="img/logo-white.svg" alt="TADAWA">
     <div style="margin-top:150px">
       <p class="eyebrow" data-a style="font-weight:500;font-size:32px">Company introduction · Nov 2026</p>
       <h1 data-a style="font-size:124px;line-height:1.2;font-weight:700">A digital, comprehensive<br>healthcare solution</h1>
@@ -158,26 +179,26 @@ a.vid:hover img,a.vid:focus-visible img{transform:scale(1.045)}
 <!-- 2 About -->
 <section class="slide light">
   <div class="pad" style="display:flex;flex-direction:column;justify-content:center">
-    <p class="eyebrow" data-a>About Tadawa</p>
+    <p class="eyebrow" data-a>About TADAWA</p>
     <h2 data-a style="font-size:84px;max-width:1600px">Connecting people to <em>the right care</em>, wherever they are</h2>
-    <p class="lead" data-a style="max-width:1450px">Tadawa is a digital-first, Family Medicine-led healthcare platform: convenient access and a more coordinated care pathway.</p>
+    <p class="lead" data-a style="max-width:1450px">TADAWA is a digital-first, Family Medicine-led healthcare platform: convenient access and a more coordinated care pathway.</p>
     <div class="flow" data-a style="margin-top:64px"><span class="chip on">Digital-first</span><i data-i="arrow" class="arw"></i><span class="chip on">Family Medicine-led</span><i data-i="arrow" class="arw"></i><span class="chip">Coordinated care pathway</span></div>
   </div>
-  <div class="foot"><span class="mark">TADAWA</span><span class="pg">02</span></div>
+  <div class="foot"><img src="img/logo-color.svg" alt="TADAWA"><span class="pg">02</span></div>
 </section>
 
 <!-- 3 Three in one -->
-<section class="slide dark">
+<section class="slide light">
   <div class="pad">
     <p class="eyebrow" data-a>Online, supported by offline</p>
     <h2 data-a>A <em>3 in 1</em> healthcare solution</h2>
     <div class="grid3" style="margin-top:90px">
-      <div class="card" data-a><div class="icbox"><i data-i="user"></i></div><h3>Primary Healthcare</h3><p>Family Medicine as the first point of care.</p></div>
-      <div class="card hero" data-a><div class="icbox"><i data-i="phone"></i></div><h3>Digitally remote access</h3><p>Care through the Tadawa app, from anywhere.</p></div>
-      <div class="card" data-a><div class="icbox"><i data-i="pin"></i></div><h3>Serve the underserved areas</h3><p>Bringing care to places that lack it.</p></div>
+      <div class="card" data-a><div class="icbox"><i class="ph-fill ph-stethoscope"></i></div><h3>Primary Healthcare</h3><p>Family Medicine as the first point of care.</p></div>
+      <div class="card hero" data-a><div class="icbox"><i class="ph-fill ph-device-mobile"></i></div><h3>Digitally remote access</h3><p>Care through the TADAWA app, from anywhere.</p></div>
+      <div class="card" data-a><div class="icbox"><i class="ph-fill ph-map-pin"></i></div><h3>Serve the underserved areas</h3><p>Bringing care to places that lack it.</p></div>
     </div>
   </div>
-  <div class="foot"><span class="mark">TADAWA</span><span class="pg">03</span></div>
+  <div class="foot"><img src="img/logo-color.svg" alt="TADAWA"><span class="pg">03</span></div>
 </section>
 
 <!-- 4 Primary Healthcare -->
@@ -189,58 +210,60 @@ a.vid:hover img,a.vid:focus-visible img{transform:scale(1.045)}
       <div class="card" data-a>
         <h3 style="color:var(--brand)">What it delivers</h3>
         <div class="steps" style="margin:28px 0 0">
-          <div class="step"><span class="n"><i data-i="check"></i></span>Right diagnosis and treatment pathway</div>
-          <div class="step"><span class="n"><i data-i="check"></i></span>Better treatment outcome</div>
-          <div class="step hl"><span class="n"><i data-i="check"></i></span>Cost effective</div>
+          <div class="step"><span class="n"><i class="ph-bold ph-check"></i></span>Right diagnosis and treatment pathway</div>
+          <div class="step"><span class="n"><i class="ph-bold ph-check"></i></span>Better treatment outcome</div>
+          <div class="step hl"><span class="n"><i class="ph-bold ph-check"></i></span>Cost effective</div>
         </div>
       </div>
       <div class="card" data-a>
         <h3 style="color:var(--brand)">What it reduces</h3>
         <div class="steps" style="margin:28px 0 0">
-          <div class="step"><span class="n x"><i data-i="minus"></i></span>Over diagnosis and over treatment</div>
-          <div class="step"><span class="n x"><i data-i="minus"></i></span>Misuse and abuse</div>
-          <div class="step"><span class="n x"><i data-i="minus"></i></span>ER visits and hospitalization</div>
+          <div class="step"><span class="n x"><i class="ph-bold ph-minus"></i></span>Over diagnosis and over treatment</div>
+          <div class="step"><span class="n x"><i class="ph-bold ph-minus"></i></span>Misuse and abuse</div>
+          <div class="step"><span class="n x"><i class="ph-bold ph-minus"></i></span>ER visits and hospitalization</div>
         </div>
       </div>
     </div>
   </div>
-  <div class="foot"><span class="mark">TADAWA</span><span class="pg">04</span></div>
+  <div class="foot"><img src="img/logo-color.svg" alt="TADAWA"><span class="pg">04</span></div>
 </section>
 
 <!-- 5 Tadawa app -->
 <section class="slide light">
   <div class="pad">
     <p class="eyebrow" data-a>2 · Digitally remote access</p>
-    <h2 data-a>The <em>Tadawa app</em></h2>
+    <h2 data-a>The <em>TADAWA app</em></h2>
     <div class="grid4">
-      <div class="card" data-a><div class="icbox"><i data-i="home"></i></div><h3>Convenience</h3><p>Care without the trip.</p></div>
-      <div class="card" data-a><div class="icbox"><i data-i="coins"></i></div><h3>Cost effective</h3><p>Lower cost per visit.</p></div>
-      <div class="card" data-a><div class="icbox"><i data-i="file"></i></div><h3>Medical records</h3><p>Your history in one place.</p></div>
-      <div class="card hero" data-a><div class="icbox"><i data-i="activity"></i></div><h3>Chronic disease care</h3><p>Special benefits for chronic disease management.</p></div>
+      <div class="card" data-a><div class="icbox"><i class="ph-fill ph-house"></i></div><h3>Convenience</h3><p>Care without the trip.</p></div>
+      <div class="card" data-a><div class="icbox"><i class="ph-fill ph-coins"></i></div><h3>Cost effective</h3><p>Lower cost per visit.</p></div>
+      <div class="card" data-a><div class="icbox"><i class="ph-fill ph-file-text"></i></div><h3>Medical records</h3><p>Your history in one place.</p></div>
+      <div class="card hero" data-a><div class="icbox"><i class="ph-fill ph-heartbeat"></i></div><h3>Chronic disease care</h3><p>Special benefits for chronic disease management.</p></div>
     </div>
   </div>
-  <div class="foot"><span class="mark">TADAWA</span><span class="pg">05</span></div>
+  <div class="foot"><img src="img/logo-color.svg" alt="TADAWA"><span class="pg">05</span></div>
 </section>
 
 <!-- 6 Underserved areas -->
-<section class="slide dark">
+<section class="slide brand">
+  <div class="hb" data-peak=".8" data-s="1.2" data-tone="white" style="top:930px"></div>
   <div class="pad">
     <p class="eyebrow" data-a>3 · Reaching further</p>
     <h2 data-a>Serve the <em>underserved areas</em></h2>
     <div class="grid4">
-      <div class="card hero" data-a><div class="icbox"><i data-i="heart"></i></div><h3>Essential need</h3><p>Care where it is missing today.</p></div>
-      <div class="card" data-a><div class="icbox"><i data-i="search"></i></div><h3>Specialized care</h3><p>Access to specialized healthcare.</p></div>
-      <div class="card" data-a><div class="icbox"><i data-i="pin"></i></div><h3>Convenience</h3><p>No long journeys to the city.</p></div>
-      <div class="card" data-a><div class="icbox"><i data-i="coins"></i></div><h3>Cost effective</h3><p>Less travel, lower cost.</p></div>
+      <div class="card" data-a><div class="icbox"><i class="ph-fill ph-heart"></i></div><h3>Essential need</h3><p>Care where it is missing today.</p></div>
+      <div class="card" data-a><div class="icbox"><i class="ph-fill ph-first-aid-kit"></i></div><h3>Specialized care</h3><p>Access to specialized healthcare.</p></div>
+      <div class="card" data-a><div class="icbox"><i class="ph-fill ph-map-pin"></i></div><h3>Convenience</h3><p>No long journeys to the city.</p></div>
+      <div class="card" data-a><div class="icbox"><i class="ph-fill ph-coins"></i></div><h3>Cost effective</h3><p>Less travel, lower cost.</p></div>
     </div>
   </div>
-  <div class="foot"><span class="mark">TADAWA</span><span class="pg">06</span></div>
+  <div class="foot"><span></span><span class="pg">06</span></div>
 </section>
 
 <!-- 7 Questions -->
 <section class="slide brand">
+  <div class="hb" data-peak=".18" data-s="1.4" data-tone="white" style="top:940px"></div>
   <div class="pad center">
-    <div data-a style="font-size:44px;font-weight:700;letter-spacing:.08em;margin-bottom:40px">TADAWA</div>
+    <img class="logo-cover" data-a src="img/logo-white.svg" alt="TADAWA" style="width:340px;margin-bottom:56px">
     <h1 data-a style="font-size:190px;line-height:1.2;font-weight:700">Questions?</h1>
     <p data-a style="margin:36px 0 0;font-size:40px;line-height:1.6;color:var(--on-brand-muted)">The right care, wherever you are.</p>
   </div>
@@ -320,7 +343,7 @@ a.vid:hover img,a.vid:focus-visible img{transform:scale(1.045)}
   }
   function reveal(sl,base){
     if(!reduce) sl.querySelectorAll('[data-a]').forEach(function(el,i){
-      anims.push(el.animate([{opacity:0,transform:'translateY(40px)'},{opacity:1,transform:'none'}],{duration:1000,delay:base+Math.min(i,14)*70,easing:'cubic-bezier(.22,1,.36,1)',fill:'backwards'}));
+      anims.push(el.animate([{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'none'}],{duration:320,delay:base+Math.min(i,14)*50,easing:'cubic-bezier(.2,0,0,1)',fill:'backwards'}));
     });
     sl.querySelectorAll('[data-count]').forEach(function(el){countUp(el,base+260)});
   }
@@ -328,9 +351,11 @@ a.vid:hover img,a.vid:focus-visible img{transform:scale(1.045)}
   function go(n){
     n=Math.max(0,Math.min(N-1,n)); if(n===cur) return;
     anims.forEach(function(a){try{a.finish()}catch(e){}}); anims=[]; timers.forEach(clearTimeout); timers=[];
+    if(cur>=0) slides[cur].dispatchEvent(new CustomEvent('slide:leave'));
     slides.forEach(function(s,i){s.classList.toggle('on',i===n)});
-    if(cur>=0) anims.push(slides[n].animate([{opacity:0},{opacity:1}],{duration:reduce?200:450,easing:'ease-out'}));
+    if(cur>=0) anims.push(slides[n].animate([{opacity:0},{opacity:1}],{duration:reduce?120:320,easing:'ease-out'}));
     reveal(slides[n],reduce?0:120);
+    slides[n].dispatchEvent(new CustomEvent('slide:enter'));
     cur=n;
     bar.style.width=((n+1)/N*100)+'%';
     count.textContent=(n+1)+' / '+N;
@@ -373,5 +398,6 @@ a.vid:hover img,a.vid:focus-visible img{transform:scale(1.045)}
   addEventListener('mousemove',wake); addEventListener('keydown',wake); addEventListener('touchstart',wake,{passive:true}); wake();
 })();
 </script>
+<script src="tadawa-pulse.js"></script>
 </body>
 </html>
