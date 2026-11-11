@@ -28,18 +28,34 @@
 
   /* footer pulse: small (s .3) and low (baseline 1016) so it never meets content,
      which ends at y 920 (the template keeps the bottom 160px for the footer) */
+  /* The footer pulse runs BETWEEN the logo and the page number with a clear gap on
+     both sides, never under the logo (feedback: the pulse must not touch the logo).
+     Works for LTR and RTL by measuring where the logo and page number sit. */
+  var GAP=48;
   slides.forEach(function(sl){
-    if(!sl.querySelector('.foot img')||sl.querySelector('.hb[data-footer]')) return;
+    var logo=sl.querySelector('.foot img');
+    if(!logo||sl.querySelector('.hb[data-footer]')) return;
+    var foot=logo.closest('.foot'), pg=foot.querySelector('.pg');
+    var fl=foot.offsetLeft, fw=foot.offsetWidth||1664;
+    /* logo width from its height and the logo's 2.05:1 ratio (the SVG may not be loaded yet) */
+    var lh=parseFloat(getComputedStyle(logo).height)||54, lw=logo.offsetWidth||Math.round(lh*2.05);
+    var rtl=getComputedStyle(foot).direction==='rtl';
+    var pgW=pg?(pg.offsetWidth||60):0, start, end;
+    if(!rtl){ start=fl+lw+GAP; end=fl+fw-pgW-GAP; }
+    else    { start=fl+pgW+GAP; end=fl+fw-lw-GAP; }
+    if(end-start<200) return;
     var hb=document.createElement('div'); hb.className='hb'; hb.setAttribute('data-footer','');
-    hb.dataset.peak='.12'; hb.dataset.s='.3'; hb.dataset.tone=sl.classList.contains('light')?'faint':'darkfaint';
-    hb.style.cssText='top:1016px;left:210px;right:auto;width:1440px';
+    hb.dataset.peak=rtl?'.88':'.12'; hb.dataset.s='.3'; hb.dataset.tone=sl.classList.contains('light')?'faint':'darkfaint';
+    hb.style.cssText='top:1016px;left:'+start+'px;right:auto;width:'+(end-start)+'px';
     sl.insertBefore(hb,sl.firstChild);
   });
 
   function build(el){
     var s=+el.dataset.s||1, W=el.offsetWidth||1920, P=(+el.dataset.peak||.5)*W, t=TONES[el.dataset.tone]||TONES.white;
     var up=126*s, dn=44*s, sw=15*s, pad=sw+4, y0=pad+up, H=up+dn+pad*2;
-    var d='M-30 '+y0+' H'+(P-43*s)+' L'+P+' '+(y0-up)+' L'+(P+58*s)+' '+(y0+dn)+' L'+(P+79*s)+' '+y0+' H'+(W+30);
+    /* the footer pulse stays inside its box (round caps inset); slide pulses bleed past the edges */
+    var ft=el.hasAttribute('data-footer'), x0=ft?sw/2:-30, x1=ft?W-sw/2:W+30;
+    var d='M'+x0+' '+y0+' H'+(P-43*s)+' L'+P+' '+(y0-up)+' L'+(P+58*s)+' '+(y0+dn)+' L'+(P+79*s)+' '+y0+' H'+x1;
     var dash='M'+(P-13*s)+' '+(y0-16.6*s)+' H'+(P+6*s);
     var svg=document.createElementNS(NS,'svg');
     svg.setAttribute('width',W); svg.setAttribute('height',H); svg.setAttribute('viewBox','0 0 '+W+' '+H);
