@@ -5,6 +5,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Tadawa Introduction</title>
+<meta name="description" content="TADAWA: a digital, comprehensive primary care service connecting people to their family doctor.">
+<meta property="og:title" content="Tadawa Introduction">
+<meta property="og:description" content="Connecting people to their family doctor, in the app and in our clinics.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0e8098">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- Readex Pro covers Latin and Arabic. Swap for brand fonts (local @font-face in fonts/) if the brand has them. -->
@@ -152,11 +157,21 @@ a.vid:hover img,a.vid:focus-visible img{transform:scale(1.045)}
 .icbox i{font-size:46px;line-height:1}
 .step .n i{font-size:30px;line-height:1}
 .step .n.x{background:var(--mist-200);color:var(--ink-600)}
+/* ux-pass-v1: rotate hint on phones, screen reader helper */
+#rotate{display:none;position:fixed;top:calc(16px + env(safe-area-inset-top,0px));left:16px;right:16px;z-index:25;align-items:center;gap:14px;background:#3a3536;color:#fff;border-radius:16px;padding:14px 16px;font:500 16px/1.4 var(--font);letter-spacing:.02em}
+#rotate i{font-size:30px;color:var(--brand-glow);flex:none}
+#rotate span{flex:1}
+#rotate button{all:unset;cursor:pointer;width:44px;height:44px;display:grid;place-items:center;border-radius:50%;flex:none;font-size:20px}
+#rotate button:focus-visible{box-shadow:0 0 0 3px rgba(127,191,205,.7)}
+@media (orientation:portrait) and (max-width:700px){#rotate:not([hidden]){display:flex}}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 </style>
 <link rel="stylesheet" href="tadawa-theme.css?v=2">
 <style>
 /* English deck: Readex Pro first (Madani Arabic stays the Arabic fallback) */
 :root{--font:"Readex Pro","Madani Arabic","Segoe UI",system-ui,sans-serif}
+/* ux-contrast-v1: AA contrast for small text, placed last so it wins */
+.brand .foot .pg{color:rgba(255,255,255,.82)}
 </style>
 </head>
 <body>
@@ -193,9 +208,9 @@ a.vid:hover img,a.vid:focus-visible img{transform:scale(1.045)}
     <p class="eyebrow" data-a>Online, supported by offline</p>
     <h2 data-a>A <em>3 in 1</em> healthcare solution</h2>
     <div class="grid3" style="margin-top:90px">
-      <div class="card" data-a><div class="icbox"><i class="ph-fill ph-stethoscope"></i></div><h3>Primary Healthcare</h3><p>Family Medicine as the first point of care.</p></div>
-      <div class="card hero" data-a><div class="icbox"><i class="ph-fill ph-device-mobile"></i></div><h3>Digitally remote access</h3><p>Care through the TADAWA app, from anywhere.</p></div>
-      <div class="card" data-a><div class="icbox"><i class="ph-fill ph-map-pin"></i></div><h3>Serve the underserved areas</h3><p>Bringing care to places that lack it.</p></div>
+      <div class="card" data-a><div class="icbox"><i class="ph-fill ph-stethoscope" aria-hidden="true"></i></div><h3>Primary Healthcare</h3><p>Family Medicine as the first point of care.</p></div>
+      <div class="card hero" data-a><div class="icbox"><i class="ph-fill ph-device-mobile" aria-hidden="true"></i></div><h3>Digitally remote access</h3><p>Care through the TADAWA app, from anywhere.</p></div>
+      <div class="card" data-a><div class="icbox"><i class="ph-fill ph-map-pin" aria-hidden="true"></i></div><h3>Serve the underserved areas</h3><p>Bringing care to places that lack it.</p></div>
     </div>
   </div>
   <div class="foot"><img src="img/logo-color.svg" alt="TADAWA"><span class="pg">03</span></div>
@@ -210,17 +225,17 @@ a.vid:hover img,a.vid:focus-visible img{transform:scale(1.045)}
       <div class="card" data-a>
         <h3 style="color:var(--brand)">What it delivers</h3>
         <div class="steps" style="margin:28px 0 0">
-          <div class="step"><span class="n"><i class="ph-bold ph-check"></i></span>Right diagnosis and treatment pathway</div>
-          <div class="step"><span class="n"><i class="ph-bold ph-check"></i></span>Better treatment outcome</div>
-          <div class="step hl"><span class="n"><i class="ph-bold ph-check"></i></span>Cost effective</div>
+          <div class="step"><span class="n"><i class="ph-bold ph-check" aria-hidden="true"></i></span>Right diagnosis and treatment pathway</div>
+          <div class="step"><span class="n"><i class="ph-bold ph-check" aria-hidden="true"></i></span>Better treatment outcome</div>
+          <div class="step hl"><span class="n"><i class="ph-bold ph-check" aria-hidden="true"></i></span>Cost effective</div>
         </div>
       </div>
       <div class="card" data-a>
         <h3 style="color:var(--brand)">What it reduces</h3>
         <div class="steps" style="margin:28px 0 0">
-          <div class="step"><span class="n x"><i class="ph-bold ph-minus"></i></span>Over diagnosis and over treatment</div>
-          <div class="step"><span class="n x"><i class="ph-bold ph-minus"></i></span>Misuse and abuse</div>
-          <div class="step"><span class="n x"><i class="ph-bold ph-minus"></i></span>ER visits and hospitalization</div>
+          <div class="step"><span class="n x"><i class="ph-bold ph-minus" aria-hidden="true"></i></span>Over diagnosis and over treatment</div>
+          <div class="step"><span class="n x"><i class="ph-bold ph-minus" aria-hidden="true"></i></span>Misuse and abuse</div>
+          <div class="step"><span class="n x"><i class="ph-bold ph-minus" aria-hidden="true"></i></span>ER visits and hospitalization</div>
         </div>
       </div>
     </div>
@@ -234,10 +249,10 @@ a.vid:hover img,a.vid:focus-visible img{transform:scale(1.045)}
     <p class="eyebrow" data-a>2 · Digitally remote access</p>
     <h2 data-a>The <em>TADAWA app</em></h2>
     <div class="grid4">
-      <div class="card" data-a><div class="icbox"><i class="ph-fill ph-house"></i></div><h3>Convenience</h3><p>Care without the trip.</p></div>
-      <div class="card" data-a><div class="icbox"><i class="ph-fill ph-coins"></i></div><h3>Cost effective</h3><p>Lower cost per visit.</p></div>
-      <div class="card" data-a><div class="icbox"><i class="ph-fill ph-file-text"></i></div><h3>Medical records</h3><p>Your history in one place.</p></div>
-      <div class="card hero" data-a><div class="icbox"><i class="ph-fill ph-heartbeat"></i></div><h3>Chronic disease care</h3><p>Special benefits for chronic disease management.</p></div>
+      <div class="card" data-a><div class="icbox"><i class="ph-fill ph-house" aria-hidden="true"></i></div><h3>Convenience</h3><p>Care without the trip.</p></div>
+      <div class="card" data-a><div class="icbox"><i class="ph-fill ph-coins" aria-hidden="true"></i></div><h3>Cost effective</h3><p>Lower cost per visit.</p></div>
+      <div class="card" data-a><div class="icbox"><i class="ph-fill ph-file-text" aria-hidden="true"></i></div><h3>Medical records</h3><p>Your history in one place.</p></div>
+      <div class="card hero" data-a><div class="icbox"><i class="ph-fill ph-heartbeat" aria-hidden="true"></i></div><h3>Chronic disease care</h3><p>Special benefits for chronic disease management.</p></div>
     </div>
   </div>
   <div class="foot"><img src="img/logo-color.svg" alt="TADAWA"><span class="pg">05</span></div>
@@ -250,10 +265,10 @@ a.vid:hover img,a.vid:focus-visible img{transform:scale(1.045)}
     <p class="eyebrow" data-a>3 · Reaching further</p>
     <h2 data-a>Serve the <em>underserved areas</em></h2>
     <div class="grid4">
-      <div class="card" data-a><div class="icbox"><i class="ph-fill ph-heart"></i></div><h3>Essential need</h3><p>Care where it is missing today.</p></div>
-      <div class="card" data-a><div class="icbox"><i class="ph-fill ph-first-aid-kit"></i></div><h3>Specialized care</h3><p>Access to specialized healthcare.</p></div>
-      <div class="card" data-a><div class="icbox"><i class="ph-fill ph-map-pin"></i></div><h3>Convenience</h3><p>No long journeys to the city.</p></div>
-      <div class="card" data-a><div class="icbox"><i class="ph-fill ph-coins"></i></div><h3>Cost effective</h3><p>Less travel, lower cost.</p></div>
+      <div class="card" data-a><div class="icbox"><i class="ph-fill ph-heart" aria-hidden="true"></i></div><h3>Essential need</h3><p>Care where it is missing today.</p></div>
+      <div class="card" data-a><div class="icbox"><i class="ph-fill ph-first-aid-kit" aria-hidden="true"></i></div><h3>Specialized care</h3><p>Access to specialized healthcare.</p></div>
+      <div class="card" data-a><div class="icbox"><i class="ph-fill ph-map-pin" aria-hidden="true"></i></div><h3>Convenience</h3><p>No long journeys to the city.</p></div>
+      <div class="card" data-a><div class="icbox"><i class="ph-fill ph-coins" aria-hidden="true"></i></div><h3>Cost effective</h3><p>Less travel, lower cost.</p></div>
     </div>
   </div>
   <div class="foot"><span></span><span class="pg">06</span></div>
@@ -276,6 +291,8 @@ a.vid:hover img,a.vid:focus-visible img{transform:scale(1.045)}
 </div>
 </div>
 
+<div id="rotate" role="note"><i class="ph-fill ph-device-rotate" aria-hidden="true"></i><span>Turn your phone sideways to read the slides.</span><button type="button" id="rotateX" aria-label="Dismiss"><i class="ph-bold ph-x" aria-hidden="true"></i></button></div>
+<p class="sr-only" id="live" aria-live="polite"></p>
 <nav class="ctrl" id="ctrl" aria-label="Slide navigation">
   <button id="fs" title="Full screen" aria-label="Full screen"><i data-i="max"></i></button>
   <button id="back" aria-label="Previous slide"><i data-i="left"></i></button>
@@ -322,6 +339,13 @@ a.vid:hover img,a.vid:focus-visible img{transform:scale(1.045)}
   });
 
   var stage=document.getElementById('stage'), slides=[].slice.call(stage.querySelectorAll('.slide')), N=slides.length;
+  stage.setAttribute('role','region'); stage.setAttribute('aria-roledescription','slide deck'); stage.setAttribute('aria-label',document.title);
+  slides.forEach(function(s,i){ s.setAttribute('role','group'); s.setAttribute('aria-roledescription','slide');
+    var h=s.querySelector('h1,h2'); if(h){h=h.cloneNode(true); [].forEach.call(h.querySelectorAll('br'),function(b){b.replaceWith(' ')});} s.setAttribute('aria-label',(i+1)+' of '+N+(h?': '+h.textContent.replace(/\s+/g,' ').trim():'')); });
+  var live=document.getElementById('live');
+  (function(){ var r=document.getElementById('rotate'), x=document.getElementById('rotateX');
+    try{ if(sessionStorage.getItem('rotateHint')==='off') r.hidden=true; }catch(e){}
+    x.onclick=function(e){ e.stopPropagation(); r.hidden=true; try{ sessionStorage.setItem('rotateHint','off'); }catch(err){} }; })();
   var bar=document.getElementById('bar'), count=document.getElementById('count'), ctrl=document.getElementById('ctrl');
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   var cur=-1, anims=[], timers=[];
@@ -361,6 +385,7 @@ a.vid:hover img,a.vid:focus-visible img{transform:scale(1.045)}
     cur=n;
     bar.style.width=((n+1)/N*100)+'%';
     count.textContent=(n+1)+' / '+N;
+    if(live) live.textContent=slides[n].getAttribute('aria-label');
     try{history.replaceState(null,'','#slide-'+(n+1))}catch(e){}
   }
   function fromHash(){var m=/slide-(\d+)/.exec(location.hash);return m?Math.max(0,Math.min(N-1,+m[1]-1)):0}
